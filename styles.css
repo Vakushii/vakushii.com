@@ -50,6 +50,14 @@ body {
   border: 2px solid rgb(255, 255, 255);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px 5px rgba(255, 255, 255, 0.8),
+              0 0 50px 10px rgba(186, 85, 211, 0.6),
+              0 0 100px 20px rgba(234, 0, 255, 0.3);
 }
 
 h1 {
@@ -287,3 +295,4 @@ p {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
 }
+

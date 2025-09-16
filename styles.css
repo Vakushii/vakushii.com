@@ -1,34 +1,43 @@
-/* Full page with GIF background */
-body {
+/* Base Reset */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Full Page */
+body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
   background: url('background.gif') no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
-/* Translucent blurred container */
+/* Glassmorphic Profile Card */
 .profile-card {
-  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(24px);
   border-radius: 20px;
-  padding: 2rem 3rem;
-  max-width: 380px;
-  width: 90vw;
+  border: 1px solid rgba(255, 255, 255, 0.164);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
   text-align: center;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: width 0.3s ease;
+  width: 100%;
+  max-width: 360px;
+  color: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+  z-index: 10;
 }
 
-/* Bigger card on desktop */
 @media (min-width: 768px) {
   .profile-card {
-    max-width: 600px;
+    max-width: 620px;
     padding: 3rem 4rem;
   }
 }
@@ -36,52 +45,245 @@ body {
 .profile-image {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-  margin-bottom: 1rem;
   object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgb(255, 255, 255);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
 }
 
 h1 {
-  margin: 0;
-  font-weight: 700;
   font-size: 1.8rem;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 h2 {
   font-weight: 400;
-  margin-top: 0.2rem;
-  margin-bottom: 1rem;
   font-size: 1rem;
-  opacity: 0.8;
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  line-height: 1.5;
   margin-bottom: 2rem;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
+/* Social Icons */
 .social-icons {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
 }
 
-.social-icon {
-  font-size: 1.5rem;
-  color: white;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0.6rem;
-  border-radius: 12px;
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.192);
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.social-icon:hover {
-  transform: scale(1.2);
-  background: rgba(255, 255, 255, 0.4);
+.social-icons a:hover {
+  transform: scale(1.15);
+  background: rgba(115, 32, 192, 0.26);
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Toggle Buttons */
+.about-toggle {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.103);
+  border: 1px solid rgba(255, 255, 255, 0.164);
+  border-radius: 10px;
+  color: white;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  z-index: 20;
+}
+
+.about-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+.music-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.103);
+  border: 1px solid rgba(255, 255, 255, 0.164);
+  border-radius: 10px;
+  color: white;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  z-index: 999;
+}
+
+.music-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+/* About Sidebar Panel */
+.about-panel {
+  position: fixed;
+  top: 0;
+  left: -360px;
+  height: 100vh;
+  width: 360px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.014);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(6px);
+  border-right: 1px solid rgba(255, 255, 255, 0.096);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+  transition: left 0.7s ease;
+  z-index: 998;
+  color: white;
+}
+
+#toggle-about:checked ~ .about-panel {
+  left: 0;
+  pointer-events: auto;
+}
+
+.about-panel h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.about-panel p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+/* Music Sidebar Panel (outer) */
+.music-panel {
+  position: fixed;
+  top: 0;
+  right: -410px;
+  height: 100vh;
+  width: 400px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.014);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(16px);
+  border-left: 1px solid rgba(255, 255, 255, 0.096);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+  transition: right 0.7s ease;
+  z-index: 999;
+  color: white;
+  overflow: hidden;
+}
+
+#toggle-music:checked ~ .music-panel {
+  right: 0;
+  pointer-events: auto;
+}
+
+/* Inner scrollable content */
+.music-panel .music-content {
+  height: 100%;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+/* Custom Scrollbar Styles */
+.music-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.music-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.music-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  transition: background 0.3s ease;
+}
+
+.music-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(58, 58, 58, 0.3);
+}
+
+/* Firefox support */
+.music-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.158) rgba(255, 255, 255, 0);
+}
+
+/* Music Heading */
+.music-panel h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Spotify iframe styling */
+.music-panel iframe {
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  transform-origin: top left;
+}
+
+/* Hide checkbox inputs */
+.hidden-toggle {
+  display: none;
+}
+
+/* Close buttons */
+.close-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.close-button.right {
+  left: auto;
+  right: 1rem;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
 }

@@ -2,29 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vakushii</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>vakushii</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="profile-card">
-    <img
-      src="osaka.png"
-      alt="Vakushii"
-      class="profile-image"
-    />
-    <h1>Vakushii</h1>
-    <h2>Awesome Person</h2>
+
+  <!-- Hidden checkboxes for panel toggles -->
+  <input type="checkbox" id="toggle-about" class="hidden-toggle" />
+  <input type="checkbox" id="toggle-music" class="hidden-toggle" />
+
+  <!-- About Panel (left) -->
+  <aside class="about-panel">
+    <label for="toggle-about" class="close-button">✖</label>
+    <h2>About Me</h2>
     <p>
-      Smooth.
+      I'm Vakushii! A very chill person who loves music, and tech.  
+      Currently pursuing a Level 3 qualification in music and spent a
+      previous year in T Level DDPD.<br><br>
+      I enjoy anime, and late-night driving sessions.  
+      Always vibing 🎧
     </p>
+  </aside>
+
+
+  <aside class="music-panel">
+  <label for="toggle-music" class="close-button right">✖</label>
+  <div class="music-content">
+    <h2>My Music Taste</h2>
+    <iframe src="https://open.spotify.com/embed/playlist/1NBKG8cvaB04u41RVsCAMX?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/0U0ldCRmgCqhVvD6ksG63j?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/4Hff1IjRbLGeLgFgxvHflk?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/playlist/3vToi2u0iyhOFBt0YuEFJ4?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/3FYDqY5BRtx3IVSaiQZSze?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5Q5EJVnP1QZj3JZFW3HRpX?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/00yjr8GXGFZJWTzDNhxlyg?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe><!-- Spotify embeds here -->
+  </div>
+</aside>
+
+  <!-- Main Content -->
+  <main class="profile-card">
+    <!-- Toggle buttons -->
+    <label for="toggle-about" class="about-toggle">About Me</label>
+    <label for="toggle-music" class="music-toggle">My Music</label>
+
+    <img src="osaka.png" alt="Vakushii" class="profile-image" id="profile-pic" />
+    <h1>Heyyy, I'm Vakushii</h1>
+    <h2>A Very cool and CHILL person!</h2>
+    <p>Attending College for a Music Level 3 qualification</p>
+    
     <div class="social-icons">
-      <a href="#" aria-label="Twitter" class="social-icon">🐦</a>
-      <a href="#" aria-label="LinkedIn" class="social-icon">🔗</a>
-      <a href="#" aria-label="GitHub" class="social-icon">🐙</a>
-      <a href="#" aria-label="Instagram" class="social-icon">📸</a>
+      <a href="https://steamcommunity.com/id/Vaxii-Kun/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/3670/3670382.png" alt="Twitter" /></a>
+      <a href="https://open.spotify.com/user/hkg3sqhehxajfabpa57amqdxq?si=6a8f2435a06a440c" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/174/174872.png" alt="LinkedIn" /></a>
+      <a href="https://www.twitch.tv/vakushiii" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111668.png" alt="Twitch" /></a>
+      <a href="https://www.youtube.com/@vakushii" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" alt="YouTube" /></a>
     </div>
   </main>
+
+  <!-- Hover Sound -->
+  <audio id="hover-sound" preload="auto">
+    <source src="sataaa.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const profilePic = document.getElementById('profile-pic');
+    const hoverSound = document.getElementById('hover-sound');
+    let canPlay = true;
+
+    profilePic.addEventListener('mouseenter', () => {
+      if (canPlay) {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+        canPlay = false;
+        setTimeout(() => canPlay = true, 15000);
+      }
+    });
+  </script>
 </body>
 </html>
-

@@ -1,60 +1,87 @@
-/* Reset */
-* {
+/* Full page with GIF background */
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  background: url('background.gif') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-body, html {
-  height: 100%;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(45deg, #7307ee, #ffaf81);
-  overflow-x: hidden;
-  color: #fff;
-}
-
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://wallpapercave.com/wp/wp2566210.jpg') no-repeat center center / cover;
-  z-index: -2;
-  filter: blur(8px) brightness(0.7);
-}
-
-.glass-panel {
+/* Translucent blurred container */
+.profile-card {
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  margin: 2rem auto;
-  padding: 2rem;
-  width: 90%;
-  max-width: 900px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-}
-
-.header, .footer {
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  max-width: 380px;
+  width: 90vw;
   text-align: center;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: width 0.3s ease;
 }
 
-nav a {
-  color: #e0f7fa;
+/* Bigger card on desktop */
+@media (min-width: 768px) {
+  .profile-card {
+    max-width: 600px;
+    padding: 3rem 4rem;
+  }
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+h2 {
+  font-weight: 400;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: white;
   text-decoration: none;
-  margin: 0 1rem;
-  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.6rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-nav a:hover {
-  text-shadow: 0 0 5px #fff;
-}
-
-section {
-  margin-top: 2rem;
-}
-
-h1, h2 {
-  text-shadow: 0 0 8px #00000080;
+.social-icon:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.4);
 }
